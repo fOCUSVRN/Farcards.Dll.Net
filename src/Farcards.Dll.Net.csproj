@@ -1,7 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFrameworks>net40;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>fOCUSVRN</Authors>
+    <Company />
+    <PackageProjectUrl>https://github.com/fOCUSVRN/Farcards.Dll.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/fOCUSVRN/Farcards.Dll.Net.git</RepositoryUrl>
+    <Version>1.0.2</Version>
   </PropertyGroup>
+
+
+
+  <Target Name="PostBuildRelease" AfterTargets="Pack" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="dotnet nuget push $(SolutionDir)src\$(OutputPath)$(PackageId).$(PackageVersion).nupkg -s &quot;GitHub&quot;" IgnoreExitCode="true" />
+  </Target>
 
 </Project>
