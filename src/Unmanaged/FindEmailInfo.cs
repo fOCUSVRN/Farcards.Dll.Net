@@ -19,6 +19,6 @@ namespace Farcards.Dll.Net.Unmanaged
         public uint Account;
         public long CardID;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
-        internal string Name;
+        public string Name;
     }
 }
